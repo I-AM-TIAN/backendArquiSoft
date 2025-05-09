@@ -4,6 +4,7 @@ const categoryRoutes = require('./categories/category.view');
 const paymentMethodRoutes = require('./paymentMethods/paymentMethod.view');
 const customerRoutes = require('./customers/customer.view');
 const saleRoutes = require('./sales/sale.view');
+const salesReportRoutes = require('./salesReports/salesreport.view');
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,6 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/payment-methods', paymentMethodRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/sales', saleRoutes);
-
+app.use('/api/sales-reports', salesReportRoutes);
 
 module.exports = app;
