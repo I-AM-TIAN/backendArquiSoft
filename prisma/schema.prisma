@@ -60,3 +60,12 @@ model Sale {
 
   @@map("sale") // Nombre de la tabla en minúsculas
 }
+
+model Proveedores {
+  id             Int    @id @default(autoincrement())
+  nit          String
+  razonsocial     String
+
+
+  @@map("proveedor") // Nombre de la tabla en minúsculas
+}
