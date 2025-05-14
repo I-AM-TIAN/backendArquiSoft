@@ -64,8 +64,17 @@ model Sale {
 model Proveedores {
   id             Int    @id @default(autoincrement())
   nit          String
-  razonsocial     String
+  razonsocial  String
 
 
   @@map("proveedor") // Nombre de la tabla en minúsculas
+}
+
+model Shipment{
+  id            Int    @id @default(autoincrement())
+  Department String
+  City       String
+  Address    String
+
+  @@map("shipment") // Nombre de la tabla en minúsculas
 }
