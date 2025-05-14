@@ -8,10 +8,12 @@ datasource db {
 }
 
 model Category {
-  id       Int       @id @default(autoincrement())
-  name     String
+  id          Int       @id @default(autoincrement())
+  name        String
   description String
-  products Product[]
+  products    Product[]
+
+  @@map("category") // Nombre de la tabla en minúsculas
 }
 
 model Product {
@@ -21,21 +23,27 @@ model Product {
   stock      Int
   categoryId Int
   category   Category @relation(fields: [categoryId], references: [id])
-  sales Sale[]
+  sales      Sale[]
+
+  @@map("product") // Nombre de la tabla en minúsculas
 }
 
 model PaymentMethod {
   id    Int    @id @default(autoincrement())
   name  String
   sales Sale[]
+
+  @@map("payment_method") // Nombre de la tabla en minúsculas
 }
 
-model Customer{
-  id Int @id @default(autoincrement())
-  name String
-  lastname String
+model Customer {
+  id             Int    @id @default(autoincrement())
+  name           String
+  lastname       String
   identification String
-  sales Sale[]
+  sales          Sale[]
+
+  @@map("customer") // Nombre de la tabla en minúsculas
 }
 
 model Sale {
@@ -47,6 +55,8 @@ model Sale {
   product         Product         @relation(fields: [productId], references: [id])
   paymentMethodId Int
   paymentMethod   PaymentMethod   @relation(fields: [paymentMethodId], references: [id])
-  customerId Int
-  customer Customer @relation(fields: [customerId], references:[id]) 
+  customerId      Int
+  customer        Customer        @relation(fields: [customerId], references: [id])
+
+  @@map("sale") // Nombre de la tabla en minúsculas
 }
