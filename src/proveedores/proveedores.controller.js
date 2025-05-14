@@ -5,8 +5,8 @@ exports.getAll = async (req, res) => {
         const proveedores = await prisma.proveedor.findMany();
         res.json(proveedores);
     } catch (error) {
-        console.error('Error fetching customers:', error);
-        res.status(500).json({ error: 'Failed to fetch customers' });
+        console.error('Error fetching proveedor:', error);
+        res.status(500).json({ error: 'Failed to fetch proveedor' });
     }
 }
 
@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
         res.status(201).json(proveedor);
     } catch (error) {
         console.error('Error creating proveedor:', error);
-        res.status(500).json({ error: 'Failed to create customer' });
+        res.status(500).json({ error: 'Failed to create proveedor' });
     }
 }
 
