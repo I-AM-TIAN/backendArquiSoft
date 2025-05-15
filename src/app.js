@@ -8,6 +8,7 @@ const inventoryRoutes = require('./inventory/inventory.view');
 const salesReportRoutes = require('./salesreports/salesreport.view');
 const proveedorRoutes = require('./proveedores/proveedores.view');
 const shipmentRoutes = require('./shipments/shipment.view');
+const productsaleresportRoutes = require('./productsalereports/productsaleresport.view');
 const authMiddleware = require('./auth/auth.middleware');
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use('/api/inventory', authMiddleware, inventoryRoutes);
 app.use('/api/sales-reports', authMiddleware, salesReportRoutes);
 app.use('/api/proveedores', authMiddleware, proveedorRoutes);
 app.use('/api/envios', authMiddleware, shipmentRoutes);
+app.use('/api/reporte-ventas-productos', authMiddleware, productsaleresportRoutes);
 
 
 module.exports = app;
