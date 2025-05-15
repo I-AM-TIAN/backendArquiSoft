@@ -2,7 +2,7 @@ const prisma = require('../lib/prisma');
 
 exports.getAll = async (req, res) => {
     try {
-        const proveedores = await prisma.proveedor.findMany();
+        const proveedores = await prisma.proveedores.findMany();
         res.json(proveedores);
     } catch (error) {
         console.error('Error fetching proveedor:', error);
@@ -13,7 +13,7 @@ exports.getAll = async (req, res) => {
 exports.create = async (req, res) => {
     const {nit, razonsocial} = req.body;
     try {
-        const proveedor = await prisma.proveedor.create({
+        const proveedor = await prisma.proveedores.create({
             data: {
                 nit,
                 razonsocial,
@@ -30,7 +30,7 @@ exports.update = async (req, res) => {
     const { id } = req.params;
     const { nit, razonsocial, } = req.body;
     try {
-        const proveedor = await prisma.proveedor.update({
+        const proveedor = await prisma.proveedores.update({
             where: { id: parseInt(id) },
             data: {
                 nit,
@@ -47,7 +47,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     const { id } = req.params;
     try {
-        await prisma.customer.delete({
+        await prisma.proveedores.delete({
             where: { id: parseInt(id) }
         });
         res.status(204).send();
