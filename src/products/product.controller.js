@@ -6,7 +6,7 @@ exports.getAll = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { name, price, stock, categoryId } = req.body;
+  const { name, price, stock, categoryId, proveedorId } = req.body;
 
   try {
     const product = await prisma.product.create({
@@ -16,6 +16,9 @@ exports.create = async (req, res) => {
         stock: parseInt(stock),
         category: {
           connect: { id: parseInt(categoryId) } // Relación con categoría existente
+        },
+        proveedor: {
+          connect: { id: parseInt(proveedorId) }
         }
       }
     });

@@ -25,6 +25,8 @@ model Product {
   category   Category @relation(fields: [categoryId], references: [id])
   sales      Sale[]
   promotions      Promotion[]
+  proveedorId       Int
+  proveedor         Proveedores       @relation(fields: [proveedorId], references: [id])
 
   @@map("product") // Nombre de la tabla en minúsculas
 }
@@ -66,7 +68,7 @@ model Proveedores {
   id             Int    @id @default(autoincrement())
   nit          String
   razonsocial  String
-
+  products    Product[]
 
   @@map("proveedor") // Nombre de la tabla en minúsculas
 }
@@ -76,6 +78,7 @@ model Shipment{
   Department String
   City       String
   Address    String
+  
 
   @@map("shipment") // Nombre de la tabla en minúsculas
 }
