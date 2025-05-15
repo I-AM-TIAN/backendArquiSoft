@@ -83,6 +83,12 @@ model Shipment{
   @@map("shipment") // Nombre de la tabla en minúsculas
 }
 
+model User {
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  password String
+  createdAt DateTime @default(now())
+}
 
 model Promotion {
   id              Int             @id @default(autoincrement())
