@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); // <--- Agrega esta línea
 const productRoutes = require('./products/product.view');
 const categoryRoutes = require('./categories/category.view');
 const paymentMethodRoutes = require('./paymentMethods/paymentMethod.view');
@@ -11,6 +12,8 @@ const shipmentRoutes = require('./shipments/shipment.view');
 const productsaleresportRoutes = require('./productsalereports/productsaleresport.view');
 const authMiddleware = require('./auth/auth.middleware');
 const app = express();
+
+app.use(cors()); // <--- Habilita CORS para todos
 app.use(express.json());
 
 app.use('/api/products', authMiddleware, productRoutes);
@@ -23,6 +26,5 @@ app.use('/api/sales-reports', authMiddleware, salesReportRoutes);
 app.use('/api/proveedores', authMiddleware, proveedorRoutes);
 app.use('/api/envios', authMiddleware, shipmentRoutes);
 app.use('/api/reporte-ventas-productos', authMiddleware, productsaleresportRoutes);
-
 
 module.exports = app;
