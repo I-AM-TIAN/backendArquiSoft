@@ -24,6 +24,7 @@ model Product {
   categoryId Int
   category   Category @relation(fields: [categoryId], references: [id])
   sales      Sale[]
+  promotions      Promotion[]
 
   @@map("product") // Nombre de la tabla en minúsculas
 }
@@ -79,9 +80,24 @@ model Shipment{
   @@map("shipment") // Nombre de la tabla en minúsculas
 }
 
+<<<<<<< HEAD
 model User {
   id       Int     @id @default(autoincrement())
   username String  @unique
   password String
   createdAt DateTime @default(now())
 }
+=======
+
+model Promotion {
+  id              Int             @id @default(autoincrement())
+  detalle         String
+  fechainicio      DateTime
+  fechafinal     DateTime
+  productId       Int
+  product         Product         @relation(fields: [productId], references: [id])
+  
+
+  @@map("promotion") // Nombre de la tabla en minúsculas
+}
+>>>>>>> 96cb813f6b8917e6ca0a9550f79a175b14acc4ef
