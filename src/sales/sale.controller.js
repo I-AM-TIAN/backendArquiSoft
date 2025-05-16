@@ -6,11 +6,7 @@ exports.getAll = async (req, res) => {
             include: {
                 customer: true,
                 paymentMethod: true,
-                saleItems: {
-                    include: {
-                        product: true
-                    }
-                }
+                product: true,
             }
         });
         res.json(sales);
