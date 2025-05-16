@@ -1,7 +1,7 @@
 const prisma = require("../lib/prisma");
 
 exports.generateReport = async (req, res) => {
-  const { startDate, endDate } = req.body;
+  const { startDate, endDate } = req.query;
   try {
     console.log("Start Date:", startDate);
     console.log("End Date:", endDate);
@@ -21,11 +21,11 @@ exports.generateReport = async (req, res) => {
 
     const formattedReport = salesReport.map((report) => ({
       id: report.id,
-      date: report.date,
+      date: report.createdAt,
       productName: report.product.name,
       customerName: report.customer.name,
       quantity: report.quantity,
-      totalPrice: report.totalPrice,
+      totalPrice: report.total,
     }));
 
     res.status(200).json({
